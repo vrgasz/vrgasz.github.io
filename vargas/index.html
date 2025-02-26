@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vargas - Bio Link</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        /* General Style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Loading Screen */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #141421;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        #loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-text {
+            font-size: 15vw; /* Lebih fleksibel */
+            font-weight: 700;
+            color: #0088ff;
+            text-shadow: 0px 0px 20px rgba(0, 136, 255, 0.7);
+            letter-spacing: 5px;
+            animation: glow 1.5s infinite ease-in-out, bounce 1.5s infinite ease-in-out;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0px 0px 20px rgba(0, 136, 255, 0.7); }
+            50% { text-shadow: 0px 0px 30px rgba(0, 136, 255, 1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Background Glow */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            background: rgba(0, 136, 255, 0.2);
+            border-radius: 50%;
+            filter: blur(100px);
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 360px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(15px);
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Profile */
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 0px 15px rgba(0, 136, 255, 0.3);
+        }
+
+        .profile img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 20px rgba(0, 136, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 8px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Links */
+        .links {
+            margin-top: 12px;
+        }
+
+        .links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .links a:hover {
+            background: rgba(0, 136, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0px 5px 15px rgba(0, 136, 255, 0.4);
+        }
+
+        .links i {
+            margin-right: 10px;
+            font-size: 17px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 18px;
+            font-size: 12px;
+            opacity: 0.75;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .links a {
+                font-size: 14px;
+                padding: 9px;
+            }
+        }
+    </style>
+</head>
+<body onload="showContent()">
+    <!-- Loading Screen -->
+    <div id="loading">
+        <span class="loading-text">V</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="profile">
+            <img src="https://raw.githubusercontent.com/vrgasz/vrgasz.github.io/refs/heads/main/img/profil.png" alt="Profile">
+        </div>
+        <h1>Vargas</h1>
+
+        <div class="links">
+            <a href="https://instagram.com/vrgasz"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/vrgasz"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://tiktok.com/@vargas_250"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://t.me/vrgasz"><i class="fab fa-telegram"></i> Telegram</a>
+        </div>
+
+        <p class="footer">Created by Vargas</p>
+    </div>
+
+    <script>
+        function showContent() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+                document.querySelector('.container').style.opacity = '1';
+                document.querySelector('.container').style.transform = 'translateY(0)';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
