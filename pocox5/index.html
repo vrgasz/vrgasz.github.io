@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biaya Harian POCO X5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffe082, #ffccbc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.9em;
+      color: #e65100;
+      font-weight: 600;
+    }
+
+    .info {
+      margin: 10px 0;
+      font-size: 1.05em;
+      color: #555;
+    }
+
+    .info span {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.25em;
+      color: #00796b;
+      font-weight: 600;
+    }
+
+    .motivation {
+      margin-top: 12px;
+      font-size: 1em;
+      color: #5d4037;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-x5-5g-1.jpg" alt="POCO X5 Hitam" />
+    <h1>POCO X5</h1>
+    <div class="info"><span>Harga:</span> Rp2.100.000</div>
+    <div class="info"><span>Tanggal Beli:</span> 20 April 2025</div>
+    <div class="result" id="hasil">Menghitung...</div>
+    <div class="motivation" id="motivasi"></div>
+  </div>
+
+  <script>
+    const harga = 2100000;
+    const tanggalBeli = new Date("2025-04-20");
+    const hariIni = new Date();
+    const selisihMs = hariIni - tanggalBeli;
+    const hariTerlewati = Math.floor(selisihMs / (1000 * 60 * 60 * 24));
+    const hasil = document.getElementById("hasil");
+    const motivasi = document.getElementById("motivasi");
+
+    if (hariTerlewati > 0) {
+      const biayaPerHari = Math.floor(harga / hariTerlewati); // Tanpa koma
+      hasil.innerHTML = `
+        Sudah dipakai selama <b>${hariTerlewati}</b> hari<br>
+        Biaya per hari: <b>Rp${biayaPerHari.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</b>
+      `;
+
+      if (hariTerlewati <= 7) {
+        motivasi.innerText = "Masih baru banget, semoga awet ya!";
+      } else if (hariTerlewati <= 30) {
+        motivasi.innerText = "Sudah sebulan lebih bareng POCO!";
+      } else if (hariTerlewati <= 100) {
+        motivasi.innerText = "Kalian udah makin akrab nih 😄";
+      } else if (hariTerlewati <= 365) {
+        motivasi.innerText = "HP-mu awet! Terus rawat dengan baik ✨";
+      } else {
+        motivasi.innerText = "Sudah lebih dari setahun bersama, luar biasa! 🔥";
+      }
+
+    } else {
+      hasil.innerText = "Tanggal beli belum tercapai atau baru hari ini.";
+      motivasi.innerText = "";
+    }
+  </script>
+</body>
+</html>
